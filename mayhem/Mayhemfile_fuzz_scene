@@ -1,0 +1,10 @@
+project: savantenvs/gpac
+target: fuzz_scene
+# No local seeds for this target. The explicit server-tar-only directive keeps the corpus accumulating
+# and stops the implicit default file://testsuite from loading upstream's root testsuite/ submodule.
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+cmds:
+  - cmd: /mayhem/fuzz_scene
+    libfuzzer: true
+    cwd: /dev/shm
